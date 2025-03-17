@@ -1,21 +1,37 @@
-import { SafeAreaView, StyleSheet, Text } from 'react-native'
-import React from 'react'
-import Home from './screens/Home'
+// App.tsx
+import 'react-native-gesture-handler';
+import { enableScreens } from 'react-native-screens';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-const App = () => {
+import { StyleSheet } from 'react-native';
+import Home from './screens/Home';
+
+enableScreens(); // Improve performance by using native navigation
+// Create stack navigator
+const Stack = createStackNavigator();
+
+const App=()=> {
   return (
-    <SafeAreaView style={styles.container}>
-      <Text style={{padding: 40}}>Hello</Text>
-      <Home />
-    </SafeAreaView>
-  )
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen 
+          name="Home" 
+          component={Home}
+          options={{
+            headerShown: false // Hide default header if you have a custom one
+          }}
+        />
+        {/* Add other screens here */}
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
 }
-
 export default App
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1, // Makes it take the full screen
-    backgroundColor: "white",
-  },
-})
+    flex: 1,
+    backgroundColor: 'white',
+  }
+});
