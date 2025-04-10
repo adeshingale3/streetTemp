@@ -6,6 +6,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import { StyleSheet } from 'react-native';
 import Home from './screens/Home';
+import YourCart from './screens/YourCart';
+
 
 enableScreens(); // Improve performance by using native navigation
 // Create stack navigator
@@ -15,13 +17,27 @@ const App=()=> {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen 
+        {/* <Stack.Screen 
           name="Home" 
           component={Home}
           options={{
             headerShown: false // Hide default header if you have a custom one
           }}
+        /> */}
+        <Stack.Screen 
+          name="Cart" 
+          component={YourCart}
+          options={{
+            headerShown: false // Hide default header if you have a custom one
+          }}
         />
+        {/* <Stack.Screen 
+          name="Billing" 
+          component={Billing}
+          options={{
+            headerShown: false // Hide default header if you have a custom one
+          }}
+        /> */}
         {/* Add other screens here */}
       </Stack.Navigator>
     </NavigationContainer>
@@ -30,8 +46,5 @@ const App=()=> {
 export default App
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'white',
-  }
+  
 });
